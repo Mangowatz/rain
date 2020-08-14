@@ -1,4 +1,4 @@
-//well. i misnamed it and apparently i can't change it. oh well
+//well. i misnamed the file and apparently i can't change it. oh well
 
 int xOldMouse, yOldMouse;
 
@@ -91,24 +91,10 @@ class Ball {
       System.out.println("IMPACT TOP WALL");
     }
     
-    /*
-    if((list.get(0).getYpos() - list.get(0).getSize()<=(list.get(1).getYpos() + list.get(1).getSize()))&&(list.get(0).getYpos() >=list.get(1).getYpos())&&
-    (list.get(0).getXpos() - list.get(0).getSize()<=(list.get(1).getXpos() + list.get(1).getSize()))&&(list.get(0).getXpos() >=list.get(1).getXpos())){
-      background(255,0,0);
-      xVel*=-1;
-      yVel*=-1;
-    }*/
-    /*
-    for(int i = 0;i<list.size();i++){
-      for(int j = 0;j<list.size();i++){
-      if(dist(list.get(i).getXpos(),list.get(i).getYpos(),list.get(j).getXpos(),list.get(j).getYpos())<(list.get(i).getSize()+list.get(j).getSize())){
-        background(200);
-      }
-    }
-    }
-    */
+
+    
     xVel*=.99;
-    yVel*=.90;
+    yVel*=.99;
     xPos+=xVel;
     yPos+=yVel;
     
@@ -116,19 +102,21 @@ class Ball {
   private void follow(Ball i){
     
     if(xPos<i.getXpos()){
-    xVel=1;
-    }else if(xPos>i.getXpos()){
+      xVel=1;
+    }
+    if(xPos>i.getXpos()){
       xVel=-1;
-    }else{
-      xVel=0;
+    }else{ 
+     // xVel=0;
     }
     
     if(yPos<i.getYpos()){
-    yVel=1;
-    }else if(yPos>i.getYpos()){
+      yVel=1;
+    }
+    if(yPos>i.getYpos()){
       yVel=-1;
     }else{
-      yVel=0;
+     // yVel=0;
     }
   }
   private void display(){
