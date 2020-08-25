@@ -101,17 +101,17 @@ class Ball {
   private void follow(Ball i){
     
     if(xPos<i.getXpos()){
-      xVel=1;
+      xVel+=.1;
     }
     if(xPos>i.getXpos()){
-      xVel=-1;
+      xVel+=-.1;
     }
     
     if(yPos<i.getYpos()){
-      yVel=1;
+      yVel+=.1;
     }
     if(yPos>i.getYpos()){
-      yVel=-1;
+      yVel+=-.1;
     }
     
   }
