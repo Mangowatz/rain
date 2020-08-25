@@ -40,7 +40,7 @@ void draw() {
 }
   for(int i =0;i<list.size();i++){
   if(i!=selection){
-    //list.get(i).follow(list.get(selection));
+    list.get(i).follow(list.get(selection));
   }
   list.get(i).update();
   list.get(i).display();

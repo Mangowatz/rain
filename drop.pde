@@ -91,7 +91,6 @@ class Ball {
       System.out.println("IMPACT TOP WALL");
     }
     
-
     
     xVel*=.99;
     yVel*=.99;
@@ -106,8 +105,6 @@ class Ball {
     }
     if(xPos>i.getXpos()){
       xVel=-1;
-    }else{ 
-     // xVel=0;
     }
     
     if(yPos<i.getYpos()){
@@ -115,9 +112,8 @@ class Ball {
     }
     if(yPos>i.getYpos()){
       yVel=-1;
-    }else{
-     // yVel=0;
     }
+    
   }
   private void display(){
     circle(xPos,yPos,size);
