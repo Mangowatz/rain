@@ -21,6 +21,7 @@ file[1]=new SoundFile(this,2+".wav");
   list.get(1).setXpos(200);
   list.get(2).setXpos(300);
 
+
 }
 void draw() {
   background(255, 255, 255);
