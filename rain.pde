@@ -4,6 +4,8 @@ import processing.sound.*;
 
 SoundFile[] file=new SoundFile[2];
 int selection = 0;
+int screenX = 1800;
+int screenY = 1000;
 float theta=0;
 ArrayList<Ball> list = new ArrayList<Ball>();
 void setup() {
@@ -11,15 +13,18 @@ void setup() {
 file[0]=new SoundFile(this,1+".wav");
 file[1]=new SoundFile(this,2+".wav");
 
-  size(1000, 1000);
+  size(1800, 1000);
   background(255, 255, 255);
-  for(int i =0;i<3;i++){
+  for(int i =0;i<6;i++){
   list.add(new Ball(random(1,10),random(1,10),(int)random(10,70),10));
   }
   //list.get(0).setDensity(10);
   list.get(0).setXpos(100);
   list.get(1).setXpos(200);
   list.get(2).setXpos(300);
+  list.get(3).setXpos(400);
+  list.get(4).setXpos(500);
+  list.get(5).setXpos(600);
 
 
 }
@@ -37,13 +42,17 @@ void draw() {
     }
     if(keyCode == DOWN){
     list.get(selection).setYvel(list.get(selection).getYvel()+.1);
-    }
+    }    
 }
+
   for(int i =0;i<list.size();i++){
   if(i!=selection){
     list.get(i).follow(list.get(selection));
   }
   list.get(i).update();
+  if(i==selection){
+    list.get(i).display(true);
+  }
   list.get(i).display();
   }
   
@@ -55,9 +64,16 @@ void draw() {
    
       list.get(i).setXvel(-((list.get(i).getXvel())-(list.get(j).getXvel())));
       list.get(i).setYvel(-((list.get(i).getYvel())-(list.get(j).getYvel())));
+      //list.get(i).setXvel(list.get(i).getXvel()*(list.get(i).getSize()/list.get(j).getSize()));
+      //list.get(i).setYvel(list.get(i).getYvel()*(list.get(i).getSize()/list.get(j).getSize()));
+     
       
       list.get(j).setXvel(((list.get(j).getXvel()*cos(theta))-(list.get(i).getXvel()*cos(theta)))/(cos(theta)));
       list.get(j).setYvel(((list.get(j).getYvel()*sin(theta))-(list.get(i).getYvel()*sin(theta)))/(sin(theta)));
+      //list.get(j).setXvel(list.get(j).getXvel()*(list.get(j).getSize()/list.get(i).getSize()));
+      //list.get(j).setYvel(list.get(j).getYvel()*(list.get(j).getSize()/list.get(i).getSize()));
+      
+      
     }
   
   /*

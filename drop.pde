@@ -55,7 +55,7 @@ class Ball {
     return density;
   }
   private float getMass(){
-    return density*PI*pow(getSize(),2);
+    return density*getSize();
   }
   
   
@@ -68,7 +68,7 @@ class Ball {
       fill(random(0,255),random(0,255),random(0,255));
       System.out.println("IMPACT LEFT WALL");
     }
-    if((xPos+getSize()>1000)){
+    if((xPos+getSize()>screenX)){
       //change xVel +
      // file[0].play(1,1);
       xVel*=-1;
@@ -76,7 +76,7 @@ class Ball {
       fill(random(0,255),random(0,255),random(0,255));
       System.out.println("IMPACT RIGHT WALL");
     }
-    if((yPos+getSize()>1000)){
+    if((yPos+getSize()>screenY)){
     //  file[1].play(1,1);
       yVel*=-1;
       yPos-=1;
@@ -117,6 +117,10 @@ class Ball {
   }
   private void display(){
     circle(xPos,yPos,size);
+  }
+  private void display(boolean bool){
+    //circle(xPos,yPos,size);
+    square(xPos-size/2,yPos-size/2,size);
   }
   
 }
