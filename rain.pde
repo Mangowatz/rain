@@ -4,16 +4,19 @@ import processing.sound.*;
 
 SoundFile[] file=new SoundFile[2];
 int selection = 0;
-int screenX = 1800;
-int screenY = 1000;
+int screenX = 1000; int screenY = 1000;
 float theta=0;
 ArrayList<Ball> list = new ArrayList<Ball>();
+Shape jim0 = new Shape(100,100,2,0);
+Shape jim1 = new Shape(450,100,2,90);
+Shape jim2 = new Shape(100,500,2,180);
+Shape jim3 = new Shape(450,500,2,270);
 void setup() {
 
 file[0]=new SoundFile(this,1+".wav");
 file[1]=new SoundFile(this,2+".wav");
 
-  size(1800, 1000);
+  size(1000, 1000);
   background(255, 255, 255);
   for(int i =0;i<6;i++){
   list.add(new Ball(random(1,10),random(1,10),(int)random(10,70),10));
@@ -26,10 +29,14 @@ file[1]=new SoundFile(this,2+".wav");
   list.get(4).setXpos(500);
   list.get(5).setXpos(600);
 
-
+  
 }
 void draw() {
   background(255, 255, 255);
+  jim0.drawShape();
+  jim1.drawShape();
+  jim2.drawShape();
+  jim3.drawShape();
   if(keyPressed){
     if(keyCode == UP){
     list.get(selection).setYvel(list.get(selection).getYvel()-.1);
