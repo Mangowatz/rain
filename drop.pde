@@ -6,14 +6,16 @@ int xOldMouse, yOldMouse;
 class Ball {
     float xVel;
     float yVel;
-    int size;
+    int size,red,green,blue;
     int xPos = 80;
     int yPos = 70;
+    boolean clr = false;
     float density;
-  public Ball(float xVel, float yVel, int size,float density){
+  public Ball(float xVel, float yVel, int size,float density, boolean clr){
     this.xVel = xVel;
     this.yVel = yVel;
     this.size = size;
+    this.clr = clr;
   }
   
   private void setXvel(float xVel){
@@ -35,6 +37,14 @@ class Ball {
   }
   private void setDensity(float density){
     this.density=density;
+  }
+  private void setColor(int red, int green, int blue){
+    this.red=red;
+    this.green=green;
+    this.blue=blue;
+  }
+  private boolean isColor(){
+    return clr;
   }
   private float getXvel(){
     return xVel;
@@ -65,7 +75,7 @@ class Ball {
      // file[0].play(1,1);
       xVel*=-1;
       xPos+=1;
-      fill(random(0,255),random(0,255),random(0,255));
+      setColor((int)random(0,255),(int)random(0,255),(int)random(0,255));
       System.out.println("IMPACT LEFT WALL");
     }
     if((xPos+getSize()>screenX)){
@@ -73,21 +83,21 @@ class Ball {
      // file[0].play(1,1);
       xVel*=-1;
       xPos-=1;
-      fill(random(0,255),random(0,255),random(0,255));
+      setColor((int)random(0,255),(int)random(0,255),(int)random(0,255));
       System.out.println("IMPACT RIGHT WALL");
     }
     if((yPos+getSize()>screenY)){
     //  file[1].play(1,1);
       yVel*=-1;
       yPos-=1;
-      fill(random(0,255),random(0,255),random(0,255));
+      setColor((int)random(0,255),(int)random(0,255),(int)random(0,255));
       System.out.println("IMPACT BOTTOM WALL");
     }
     if((yPos-getSize()<0)){
    //   file[1].play(1,1);
       yVel*=-1;
       yPos+=1;
-      fill(random(0,255),random(0,255),random(0,255));
+      setColor((int)random(0,255),(int)random(0,255),(int)random(0,255));
       System.out.println("IMPACT TOP WALL");
     }
     
@@ -106,7 +116,6 @@ class Ball {
     if(xPos>i.getXpos()){
       xVel+=-.1;
     }
-    
     if(yPos<i.getYpos()){
       yVel+=.1;
     }
@@ -116,6 +125,9 @@ class Ball {
     
   }
   private void display(){
+    if(isColor()){
+    fill(red,green,blue);
+    }
     circle(xPos,yPos,size);
   }
   private void display(boolean bool){

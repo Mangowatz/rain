@@ -1,3 +1,5 @@
+//I think I should treat the shape as a wall in the sense of comparing the ball to line, not point, Then it is only x sides per shape instead of thousands. That makes a lot of sense writing it out
+
 class Shape{
   int xPos, yPos, type, rotation;
   

@@ -19,7 +19,7 @@ file[1]=new SoundFile(this,2+".wav");
   size(1000, 1000);
   background(255, 255, 255);
   for(int i =0;i<6;i++){
-  list.add(new Ball(random(1,10),random(1,10),(int)random(10,70),10));
+  list.add(new Ball(random(1,10),random(1,10),(int)random(10,70),10,true));
   }
   //list.get(0).setDensity(10);
   list.get(0).setXpos(100);
