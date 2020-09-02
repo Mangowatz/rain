@@ -16,6 +16,7 @@ class Ball {
     this.yVel = yVel;
     this.size = size;
     this.clr = clr;
+    System.out.println("New Ball with velocity "+xVel+", "+yVel+" and size "+size+" and color "+ clr);
   }
   
   private void setXvel(float xVel){
@@ -127,6 +128,8 @@ class Ball {
   private void display(){
     if(isColor()){
     fill(red,green,blue);
+    }else{
+      fill(255,255,255);
     }
     circle(xPos,yPos,size);
   }

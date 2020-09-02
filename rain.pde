@@ -4,13 +4,15 @@ import processing.sound.*;
 
 SoundFile[] file=new SoundFile[2];
 int selection = 0;
+static final int ballNumber = 5;
+static final int shapeNumber = 4;
 int screenX = 1000; int screenY = 1000;
 float theta=0;
 ArrayList<Ball> list = new ArrayList<Ball>();
-Shape jim0 = new Shape(100,100,2,0);
-Shape jim1 = new Shape(450,100,2,90);
-Shape jim2 = new Shape(100,500,2,180);
-Shape jim3 = new Shape(450,500,2,270);
+ArrayList<Shape> shapeList = new ArrayList<Shape>();
+
+
+
 void setup() {
 
 file[0]=new SoundFile(this,1+".wav");
@@ -18,8 +20,11 @@ file[1]=new SoundFile(this,2+".wav");
 
   size(1000, 1000);
   background(255, 255, 255);
-  for(int i =0;i<6;i++){
+  for(int i =0;i<=ballNumber;i++){
   list.add(new Ball(random(1,10),random(1,10),(int)random(10,70),10,true));
+  }
+  for(int i =0;i<=shapeNumber;i++){
+  shapeList.add(new Shape((int)random(100,700),(int)random(100,700),(int)random(0,3),(int)random(0,4)));
   }
   //list.get(0).setDensity(10);
   list.get(0).setXpos(100);
@@ -33,10 +38,9 @@ file[1]=new SoundFile(this,2+".wav");
 }
 void draw() {
   background(255, 255, 255);
-  jim0.drawShape();
-  jim1.drawShape();
-  jim2.drawShape();
-  jim3.drawShape();
+  for(int i = 0;i<shapeList.size();i++){
+    shapeList.get(i).drawShape();
+  }
   if(keyPressed){
     if(keyCode == UP){
     list.get(selection).setYvel(list.get(selection).getYvel()-.1);

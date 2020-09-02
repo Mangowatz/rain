@@ -8,6 +8,7 @@ class Shape{
     this.yPos = yPos;
     this.type = type;
     this.rotation = rotation;
+    System.out.println("New Shape located at "+xPos+", "+yPos+" of type "+type+" and rotation "+ rotation);
   }
   private void setXpos(int xPos){
     this.xPos=xPos;
@@ -36,13 +37,13 @@ class Shape{
   
   
   /** @param type this is the type of shape. Accepts 0,1,2
-  *@param rotation this is the rotation of a shape. Accepts 0,90,180,270
+  *@param rotation this is the rotation of a shape. Accepts 0,1(90),2(180),3(270)
   *this method draws imovable barriers that Balls bounce off of. There are three shapes which can be flipped
   */
   private void drawShape(){
     
     if(type == 0){//this shape is a straight line
-       if(rotation == 0 || rotation == 270){
+       if(rotation == 0 || rotation == 3){
          rect(xPos,yPos,400,50);//make 400x50 rect with xPos and yPos as center
        }else{
          rect(xPos,yPos,50,400);
@@ -66,15 +67,15 @@ class Shape{
         rect(xPos,yPos,200,50);
         rect(xPos,yPos,50,200);
         rect(xPos,yPos+150,200,50);
-      }else if(rotation==90){
+      }else if(rotation==1){
         rect(xPos,yPos,200,50);
         rect(xPos,yPos,50,200);
         rect(xPos+150,yPos,50,200);
-      }else if(rotation==180){
+      }else if(rotation==2){
         rect(xPos,yPos,200,50);
         rect(xPos+150,yPos,50,200);
         rect(xPos,yPos+150,200,50);
-      }else if(rotation==270){
+      }else if(rotation==3){
         rect(xPos,yPos+150,200,50);
         rect(xPos,yPos,50,200);
         rect(xPos+150,yPos,50,200);
