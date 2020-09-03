@@ -23,10 +23,19 @@ file[1]=new SoundFile(this,2+".wav");
   for(int i =0;i<=ballNumber;i++){
   list.add(new Ball(random(1,10),random(1,10),(int)random(10,70),10,true));
   }
-  for(int i =0;i<=shapeNumber;i++){
-  shapeList.add(new Shape((int)random(100,700),(int)random(100,700),(int)random(0,3),(int)random(0,4)));
-  }
+  
+      shapeList.add(new Shape((int)random(50,300),(int)random(200,300),(int)random(0,3),(int)random(0,4)));
+    
+      shapeList.add(new Shape((int)random(500,700),(int)random(200,300),(int)random(0,3),(int)random(0,4)));
+    
+      shapeList.add(new Shape((int)random(50,300),(int)random(500,700),(int)random(0,3),(int)random(0,4)));
+    
+      shapeList.add(new Shape((int)random(500,700),(int)random(500,700),(int)random(0,3),(int)random(0,4)));
+    
+  
+  
   //list.get(0).setDensity(10);
+  
   list.get(0).setXpos(100);
   list.get(1).setXpos(200);
   list.get(2).setXpos(300);
@@ -69,6 +78,7 @@ void draw() {
   
   for(int i =0;i<list.size();i++){//checks if any balls touch
   for(int j =0; j<i;j++){
+    if(list.get(i).getYpos()==0) list.get(i).setYpos(100);//should remove balls from getting stuck on top of screen
     if(((list.get(i).getSize()+list.get(j).getSize())>dist(list.get(i).getXpos(),list.get(i).getYpos(),list.get(j).getXpos(),list.get(j).getYpos()))&&(j!=i)){//balls touch
    System.out.println("!!!!! IMPACT " + i +" : "+ j + " Selection: "+selection);
    
