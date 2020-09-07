@@ -31,7 +31,6 @@ file[1]=new SoundFile(this,2+".wav");
       shapeList.add(new Shape((int)random(50,300),(int)random(500,700),(int)random(0,3),(int)random(0,4)));
     
       shapeList.add(new Shape((int)random(500,700),(int)random(500,700),(int)random(0,3),(int)random(0,4)));
-    
   
   
   //list.get(0).setDensity(10);
@@ -43,13 +42,13 @@ file[1]=new SoundFile(this,2+".wav");
   list.get(4).setXpos(500);
   list.get(5).setXpos(600);
 
-  
 }
 void draw() {
   background(255, 255, 255);
   for(int i = 0;i<shapeList.size();i++){
-    shapeList.get(i).drawShape();
-  }
+        fill(40,100,200);
+        shapeList.get(i).drawShape();
+      }
   if(keyPressed){
     if(keyCode == UP){
     list.get(selection).setYvel(list.get(selection).getYvel()-.1);
@@ -95,6 +94,14 @@ void draw() {
       //list.get(j).setYvel(list.get(j).getYvel()*(list.get(j).getSize()/list.get(i).getSize()));
       
       
+    }else if(list.get(i).isTouchingBoundry()==0){//up
+      list.get(i).setYvel(-list.get(i).getYvel());
+    }else if(list.get(i).isTouchingBoundry()==1){//down
+      list.get(i).setYvel(-list.get(i).getYvel());
+    }else if(list.get(i).isTouchingBoundry()==2){//left
+      list.get(i).setXvel(-list.get(i).getXvel());
+    }else if(list.get(i).isTouchingBoundry()==3){//right
+      list.get(i).setXvel(-list.get(i).getXvel());
     }
   
   /*

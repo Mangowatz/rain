@@ -138,4 +138,7 @@ class Ball {
     square(xPos-size/2,yPos-size/2,size);
   }
   
+  private int isTouchingBoundry(){
+    return 3;
+  }
 }

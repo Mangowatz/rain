@@ -43,7 +43,7 @@ class Shape{
   private void drawShape(){
     
     if(type == 0){//this shape is a straight line
-       if(rotation == 0 || rotation == 3){
+       if(rotation == 0 || rotation == 2){
          rect(xPos,yPos,400,50);//make 400x50 rect with xPos and yPos as center
        }else{
          rect(xPos,yPos,50,400);
@@ -52,13 +52,13 @@ class Shape{
       if(rotation==0){
         rect(xPos,yPos,200,50);
         rect(xPos,yPos-200,50,200);
-      }else if(rotation==90){
+      }else if(rotation==1){
         rect(xPos,yPos,200,50);
         rect(xPos-50,yPos,50,200);
-      }else if(rotation==180){
+      }else if(rotation==2){
         rect(xPos,yPos,200,50);
         rect(xPos+200,yPos,50,200);
-      }else if(rotation==270){
+      }else if(rotation==3){
         rect(xPos,yPos,200,50);
         rect(xPos+200,yPos-150,50,200);
       }
