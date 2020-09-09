@@ -50,17 +50,17 @@ class Shape{
        }
     }else if(type==1){//this will be 'L' shape 200x200
       if(rotation==0){
-        rect(xPos,yPos,200,50);
-        rect(xPos,yPos-200,50,200);
+        rect(xPos,yPos+150,200,50);
+        rect(xPos,yPos,50,200);
       }else if(rotation==1){
-        rect(xPos,yPos,200,50);
-        rect(xPos-50,yPos,50,200);
+        rect(xPos+50,yPos,200,50);
+        rect(xPos,yPos,50,200);
       }else if(rotation==2){
         rect(xPos,yPos,200,50);
         rect(xPos+200,yPos,50,200);
       }else if(rotation==3){
-        rect(xPos,yPos,200,50);
-        rect(xPos+200,yPos-150,50,200);
+        rect(xPos,yPos+150,200,50);
+        rect(xPos+150,yPos,50,200);
       }
     }else if(type ==2){//this will be a 'C' shape
       if(rotation==0){

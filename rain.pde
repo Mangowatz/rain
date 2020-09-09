@@ -24,13 +24,14 @@ file[1]=new SoundFile(this,2+".wav");
   list.add(new Ball(random(1,10),random(1,10),(int)random(10,70),10,true));
   }
   
-      shapeList.add(new Shape((int)random(50,300),(int)random(200,300),(int)random(0,3),(int)random(0,4)));
+  shapeList.add(new Shape(0,0,1,0));
+      //shapeList.add(new Shape((int)random(50,300),(int)random(200,300),(int)random(0,3),(int)random(0,4)));
     
-      shapeList.add(new Shape((int)random(500,700),(int)random(200,300),(int)random(0,3),(int)random(0,4)));
+      //shapeList.add(new Shape((int)random(500,700),(int)random(200,300),(int)random(0,3),(int)random(0,4)));
     
-      shapeList.add(new Shape((int)random(50,300),(int)random(500,700),(int)random(0,3),(int)random(0,4)));
+      //shapeList.add(new Shape((int)random(50,300),(int)random(500,700),(int)random(0,3),(int)random(0,4)));
     
-      shapeList.add(new Shape((int)random(500,700),(int)random(500,700),(int)random(0,3),(int)random(0,4)));
+      //shapeList.add(new Shape((int)random(500,700),(int)random(500,700),(int)random(0,3),(int)random(0,4)));
   
   
   //list.get(0).setDensity(10);
@@ -94,13 +95,9 @@ void draw() {
       //list.get(j).setYvel(list.get(j).getYvel()*(list.get(j).getSize()/list.get(i).getSize()));
       
       
-    }else if(list.get(i).isTouchingBoundry()==0){//up
+    }else if(list.get(i).touchingBoundry()==0){//vertical
       list.get(i).setYvel(-list.get(i).getYvel());
-    }else if(list.get(i).isTouchingBoundry()==1){//down
-      list.get(i).setYvel(-list.get(i).getYvel());
-    }else if(list.get(i).isTouchingBoundry()==2){//left
-      list.get(i).setXvel(-list.get(i).getXvel());
-    }else if(list.get(i).isTouchingBoundry()==3){//right
+    }else if(list.get(i).touchingBoundry()==1){//horizontal
       list.get(i).setXvel(-list.get(i).getXvel());
     }
   

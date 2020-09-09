@@ -101,8 +101,18 @@ class Ball {
       setColor((int)random(0,255),(int)random(0,255),(int)random(0,255));
       System.out.println("IMPACT TOP WALL");
     }
-    
-    
+    /*
+    if(abs(xVel)>100){
+      xVel=0;
+      xPos = 100;
+      yPos=100;
+    }
+    else if(abs(yVel)>100){
+      yVel=0;
+       xPos = 100;
+      yPos=100;
+    }
+    */
     xVel*=.99;
     yVel*=.99;
     xPos+=xVel;
@@ -138,7 +148,7 @@ class Ball {
     square(xPos-size/2,yPos-size/2,size);
   }
   
-  private int isTouchingBoundry(){
-    return 3;
+  private int touchingBoundry(){
+    return 0;
   }
 }
