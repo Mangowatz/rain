@@ -149,6 +149,19 @@ class Ball {
   }
   
   private int touchingBoundry(){
-    return 0;
+    for(int i =0;i<shapeList.size();i++){
+    if((xPos+(size/2)>boundList.get(i).getXUpper()&&(xPos-(size/2))<boundList.get(i).getXLower())&&(yPos+(size/2)>=boundList.get(i).getYUpper()&&yPos-(size/2)<=boundList.get(i).getYLower())){//vertical boundry
+      //background(255,255,255);
+      return 0;
+    }else if((yPos+(size/2)<boundList.get(i).getYUpper()&&(yPos-(size/2))>boundList.get(i).getYLower())&&(xPos+(size/2)>=boundList.get(i).getXUpper()&&xPos-(size/2)<=boundList.get(i).getXLower())){//horizontal boundry
+      background(55,25,25);
+      return 1;
+    }
+    }return 2;
   }
 }
+
+/*
+Lets create an arrayList of boundry zones defined as xAxisLowerBound,xAxisUpperBound, yUpperBound, yLower bound (vice versa for horiz.)
+if
+*/

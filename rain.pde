@@ -6,6 +6,7 @@ SoundFile[] file=new SoundFile[2];
 int selection = 0;
 static final int ballNumber = 5;
 static final int shapeNumber = 4;
+boolean start = false;
 int screenX = 1000; int screenY = 1000;
 float theta=0;
 ArrayList<Ball> list = new ArrayList<Ball>();
@@ -21,10 +22,16 @@ file[1]=new SoundFile(this,2+".wav");
   size(1000, 1000);
   background(255, 255, 255);
   for(int i =0;i<=ballNumber;i++){
-  list.add(new Ball(random(1,10),random(1,10),(int)random(10,70),10,true));
+  list.add(new Ball(/*random(1,10),random(1,10)*/0,0,(int)random(10,70),10,true));
   }
   
-  shapeList.add(new Shape(0,0,1,0));
+        shapeList.add(new Shape(250,250,0,1));
+        shapeList.add(new Shape(500,500,1,0));
+        //shapeList.add(new Shape((int)random(50,300),(int)random(200,300),(int)random(0,1),(int)random(0,4)));
+        //shapeList.add(new Shape((int)random(500,700),(int)random(200,300),(int)random(0,1),(int)random(0,4)));
+        //shapeList.add(new Shape((int)random(50,300),(int)random(500,700),(int)random(0,1),(int)random(0,4)));
+        //shapeList.add(new Shape((int)random(500,300),(int)random(500,700),(int)random(0,1),(int)random(0,4)));
+  
       //shapeList.add(new Shape((int)random(50,300),(int)random(200,300),(int)random(0,3),(int)random(0,4)));
     
       //shapeList.add(new Shape((int)random(500,700),(int)random(200,300),(int)random(0,3),(int)random(0,4)));
@@ -36,7 +43,8 @@ file[1]=new SoundFile(this,2+".wav");
   
   //list.get(0).setDensity(10);
   
-  list.get(0).setXpos(100);
+  list.get(0).setXpos(50);
+  list.get(0).setYpos(50);
   list.get(1).setXpos(200);
   list.get(2).setXpos(300);
   list.get(3).setXpos(400);
@@ -46,6 +54,11 @@ file[1]=new SoundFile(this,2+".wav");
 }
 void draw() {
   background(255, 255, 255);
+  noStroke();
+  fill(255,0,0);
+  square(0,0,100);
+  fill(0,255,0);
+  square(900,900,100);
   for(int i = 0;i<shapeList.size();i++){
         fill(40,100,200);
         shapeList.get(i).drawShape();
@@ -64,10 +77,10 @@ void draw() {
     list.get(selection).setYvel(list.get(selection).getYvel()+.1);
     }    
 }
-
+if(list.get(selection).xPos>100||list.get(selection).yPos>100) start=true;
   for(int i =0;i<list.size();i++){
-  if(i!=selection){
-    list.get(i).follow(list.get(selection));
+  if(start&&i!=selection){
+    //list.get(i).follow(list.get(selection));
   }
   list.get(i).update();
   if(i==selection){
@@ -94,12 +107,13 @@ void draw() {
       //list.get(j).setXvel(list.get(j).getXvel()*(list.get(j).getSize()/list.get(i).getSize()));
       //list.get(j).setYvel(list.get(j).getYvel()*(list.get(j).getSize()/list.get(i).getSize()));
       
-      
-    }else if(list.get(i).touchingBoundry()==0){//vertical
-      list.get(i).setYvel(-list.get(i).getYvel());
-    }else if(list.get(i).touchingBoundry()==1){//horizontal
-      list.get(i).setXvel(-list.get(i).getXvel());
-    }
+     
+    }if(list.get(j).touchingBoundry()==0){//vertical
+      list.get(j).setXvel(-list.get(i).getXvel());
+      System.out.println("shape strike");
+    }if(list.get(j).touchingBoundry()==1){//horizontal
+      list.get(j).setYvel(-list.get(i).getYvel());
+    } 
   
   /*
       list.get(0).setXvel(((list.get(0).getMass()*list.get(0).getXvel())-(list.get(1).getMass()*list.get(1).getXvel()))/(list.get(0).getMass()));

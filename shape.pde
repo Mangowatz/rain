@@ -1,7 +1,10 @@
 //I think I should treat the shape as a wall in the sense of comparing the ball to line, not point, Then it is only x sides per shape instead of thousands. That makes a lot of sense writing it out
-
+ static int count;
+ ArrayList<Bound> boundList = new ArrayList<Bound>();
+ 
 class Shape{
   int xPos, yPos, type, rotation;
+ 
   
   public Shape(int xPos, int yPos, int type, int rotation){
     this.xPos = xPos;
@@ -9,6 +12,7 @@ class Shape{
     this.type = type;
     this.rotation = rotation;
     System.out.println("New Shape located at "+xPos+", "+yPos+" of type "+type+" and rotation "+ rotation);
+    count++;
   }
   private void setXpos(int xPos){
     this.xPos=xPos;
@@ -45,13 +49,17 @@ class Shape{
     if(type == 0){//this shape is a straight line
        if(rotation == 0 || rotation == 2){
          rect(xPos,yPos,400,50);//make 400x50 rect with xPos and yPos as center
+         boundList.add(new Bound(xPos,xPos+400,yPos,yPos+50));
        }else{
          rect(xPos,yPos,50,400);
+         boundList.add(new Bound(xPos,xPos+50,yPos,yPos+400));
        }
     }else if(type==1){//this will be 'L' shape 200x200
       if(rotation==0){
         rect(xPos,yPos+150,200,50);
         rect(xPos,yPos,50,200);
+        boundList.add(new Bound(xPos,xPos+50,yPos,yPos+200));
+        boundList.add(new Bound(xPos,xPos+200,yPos,yPos+50));
       }else if(rotation==1){
         rect(xPos+50,yPos,200,50);
         rect(xPos,yPos,50,200);
@@ -85,4 +93,25 @@ class Shape{
     }
   }
   
+}
+class Bound{
+  int xUB,xLB,yUB,yLB;
+  public Bound(int xUpper,int xLower, int yUpper, int yLower ){
+    xUB = xUpper;
+    xLB = xLower;
+    yUB = yUpper;
+    yLB = yLower;
+  }
+  private int getXUpper(){
+    return xUB;
+  }
+  private int getYUpper(){
+    return yUB;
+  }
+  private int getXLower(){
+    return xLB;
+  }
+  private int getYLower(){
+    return yLB;
+  }
 }
