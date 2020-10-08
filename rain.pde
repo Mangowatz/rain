@@ -16,8 +16,8 @@ ArrayList<Shape> shapeList = new ArrayList<Shape>();
 
 void setup() {
 
-file[0]=new SoundFile(this,1+".wav");
-file[1]=new SoundFile(this,2+".wav");
+//file[0]=new SoundFile(this,1+".wav");
+//file[1]=new SoundFile(this,2+".wav");
 
   size(1000, 1000);
   background(255, 255, 255);
@@ -109,10 +109,10 @@ if(list.get(selection).xPos>100||list.get(selection).yPos>100) start=true;
       
      
     }if(list.get(j).touchingBoundry()==0){//vertical
-      list.get(j).setXvel(-list.get(i).getXvel());
+      list.get(j).setXvel(-list.get(j).getXvel());
       System.out.println("shape strike");
     }if(list.get(j).touchingBoundry()==1){//horizontal
-      list.get(j).setYvel(-list.get(i).getYvel());
+      list.get(j).setYvel(-list.get(j).getYvel());
     } 
   
   /*

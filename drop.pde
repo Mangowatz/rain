@@ -150,10 +150,11 @@ class Ball {
   
   private int touchingBoundry(){
     for(int i =0;i<shapeList.size();i++){
-    if((xPos+(size/2)>boundList.get(i).getXUpper()&&(xPos-(size/2))<boundList.get(i).getXLower())&&(yPos+(size/2)>=boundList.get(i).getYUpper()&&yPos-(size/2)<=boundList.get(i).getYLower())){//vertical boundry
+    if((xPos-(size/2)<=boundList.get(i).getXPositive())&&((xPos+(size/2))>=boundList.get(i).getXNegative())&&(yPos-(size/2)<=boundList.get(i).getYPositive()&&yPos+(size/2)>=boundList.get(i).getYNegative())){//vertical boundry
       //background(255,255,255);
       return 0;
-    }else if((yPos+(size/2)<boundList.get(i).getYUpper()&&(yPos-(size/2))>boundList.get(i).getYLower())&&(xPos+(size/2)>=boundList.get(i).getXUpper()&&xPos-(size/2)<=boundList.get(i).getXLower())){//horizontal boundry
+    }//else if((yPos-(size/2)<=boundList.get(i).getYPositive()&&(yPos+(size/2))>=boundList.get(i).getYNegative())&&(xPos-(size/2)<=boundList.get(i).getXPositive()&&xPos+(size/2)>=boundList.get(i).getXNegative())){//horizontal boundry
+      else if(((yPos+(size/2))>=boundList.get(i).getYPositive()-5&&((yPos+(size/2))<=boundList.get(i).getYPositive()+5)&&yVel>0)/*&& it's wthin x bounds*/){
       background(55,25,25);
       return 1;
     }
