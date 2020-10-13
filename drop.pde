@@ -101,18 +101,14 @@ class Ball {
       setColor((int)random(0,255),(int)random(0,255),(int)random(0,255));
       System.out.println("IMPACT TOP WALL");
     }
-    /*
-    if(abs(xVel)>100){
+    
+    if(abs(xVel)<=.09){
       xVel=0;
-      xPos = 100;
-      yPos=100;
     }
-    else if(abs(yVel)>100){
+    if(abs(yVel)<=.09){
       yVel=0;
-       xPos = 100;
-      yPos=100;
     }
-    */
+   
     xVel*=.99;
     yVel*=.99;
     xPos+=xVel;
@@ -149,12 +145,12 @@ class Ball {
   }
   
   private int touchingBoundry(){
-    for(int i =0;i<shapeList.size();i++){
-    if((xPos-(size/2)<=boundList.get(i).getXPositive())&&((xPos+(size/2))>=boundList.get(i).getXNegative())&&(yPos-(size/2)<=boundList.get(i).getYPositive()&&yPos+(size/2)>=boundList.get(i).getYNegative())){//vertical boundry
+    for(int i =0;i<=shapeList.size();i++){
+    if((this.xPos-(size/2)<=boundList.get(i).getXPositive())&&((this.xPos+(size/2))>=boundList.get(i).getXNegative())&&(this.yPos-(size/2)<=boundList.get(i).getYPositive()&&this.yPos+(size/2)>=boundList.get(i).getYNegative())){//vertical boundry
       //background(255,255,255);
       return 0;
     }//else if((yPos-(size/2)<=boundList.get(i).getYPositive()&&(yPos+(size/2))>=boundList.get(i).getYNegative())&&(xPos-(size/2)<=boundList.get(i).getXPositive()&&xPos+(size/2)>=boundList.get(i).getXNegative())){//horizontal boundry
-      else if(((yPos+(size/2))>=boundList.get(i).getYPositive()-5&&((yPos+(size/2))<=boundList.get(i).getYPositive()+5)&&yVel>0)/*&& it's wthin x bounds*/){
+      else if(((yPos+(size/2))>=boundList.get(i).getYPositive()-5&&((yPos+(size/2))<=boundList.get(i).getYPositive()+5))&&true&&(this.xPos<=boundList.get(i).getXPositive()&&this.xPos>boundList.get(i).getXNegative())/*&& it's wthin x bounds*/){
       background(55,25,25);
       return 1;
     }

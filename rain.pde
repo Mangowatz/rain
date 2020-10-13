@@ -90,7 +90,7 @@ if(list.get(selection).xPos>100||list.get(selection).yPos>100) start=true;
   }
   
   for(int i =0;i<list.size();i++){//checks if any balls touch
-  for(int j =0; j<i;j++){
+  for(int j =0; j<=i;j++){
     if(list.get(i).getYpos()==0) list.get(i).setYpos(100);//should remove balls from getting stuck on top of screen
     if(((list.get(i).getSize()+list.get(j).getSize())>dist(list.get(i).getXpos(),list.get(i).getYpos(),list.get(j).getXpos(),list.get(j).getYpos()))&&(j!=i)){//balls touch
    System.out.println("!!!!! IMPACT " + i +" : "+ j + " Selection: "+selection);
@@ -110,9 +110,10 @@ if(list.get(selection).xPos>100||list.get(selection).yPos>100) start=true;
      
     }if(list.get(j).touchingBoundry()==0){//vertical
       list.get(j).setXvel(-list.get(j).getXvel());
-      System.out.println("shape strike");
-    }if(list.get(j).touchingBoundry()==1){//horizontal
+      System.out.println("shape strike vert");
+    }else if(list.get(j).touchingBoundry()==1){//horizontal
       list.get(j).setYvel(-list.get(j).getYvel());
+      System.out.println("shape strike horiz");
     } 
   
   /*
