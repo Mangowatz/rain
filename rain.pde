@@ -108,13 +108,7 @@ if(list.get(selection).xPos>100||list.get(selection).yPos>100) start=true;
       //list.get(j).setYvel(list.get(j).getYvel()*(list.get(j).getSize()/list.get(i).getSize()));
       
      
-    }if(list.get(j).touchingBoundry()==0){//vertical
-      list.get(j).setXvel(-list.get(j).getXvel());
-      System.out.println("shape strike vert");
-    }else if(list.get(j).touchingBoundry()==1){//horizontal
-      list.get(j).setYvel(-list.get(j).getYvel());
-      System.out.println("shape strike horiz");
-    } 
+    }
   
   /*
       list.get(0).setXvel(((list.get(0).getMass()*list.get(0).getXvel())-(list.get(1).getMass()*list.get(1).getXvel()))/(list.get(0).getMass()));
@@ -131,6 +125,13 @@ if(list.get(selection).xPos>100||list.get(selection).yPos>100) start=true;
                                                                                                                                                                                                                
 
   }
+  if(list.get(i).touchingBoundry()==0){//vertical
+      list.get(i).setXvel(-list.get(i).getXvel());
+      System.out.println("shape strike vert");
+    }else if(list.get(i).touchingBoundry()==1){//horizontal
+      list.get(i).setYvel(-list.get(i).getYvel());
+      System.out.println("shape strike horiz");
+    } 
   }
 
   //these calculate the angle between two ball from 0-360 starting from left horizontal and continuing clockwise
