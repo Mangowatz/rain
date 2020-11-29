@@ -11,7 +11,12 @@ int screenX = 1000; int screenY = 1000;
 float theta=0;
 ArrayList<Ball> list = new ArrayList<Ball>();
 ArrayList<Shape> shapeList = new ArrayList<Shape>();
-
+int timeLeftGame=60;
+int timeLeftGreen=5;
+int elapsedTime;
+int timeOffset;
+float greenOffset;
+float greenCount;
 
 
 void setup() {
@@ -77,10 +82,12 @@ void draw() {
     list.get(selection).setYvel(list.get(selection).getYvel()+.1);
     }    
 }
+if(!start)timeOffset=(millis()/1000); //Don't start timer until ball leaves zone
+
 if(list.get(selection).xPos>100||list.get(selection).yPos>100) start=true;
   for(int i =0;i<list.size();i++){
   if(start&&i!=selection){
-    //list.get(i).follow(list.get(selection));
+    list.get(i).follow(list.get(selection));
   }
   list.get(i).update();
   if(i==selection){
@@ -142,6 +149,21 @@ if(list.get(selection).xPos>100||list.get(selection).yPos>100) start=true;
   for(int i = 0; i<list.size();i++){
     System.out.println(i+": "+" xVel: "+list.get(i).getXvel()+" yVel: "+list.get(i).getYvel()+" xPos: "+list.get(i).getXpos()+" yPos: "+list.get(i).getYpos());
   }
+
+  elapsedTime = (millis()/1000)-timeOffset;
+ 
+  if(list.get(selection).xPos<100||list.get(selection).yPos<100){
+    greenOffset=elapsedTime;
+  }else{
+    timeLeftGreen+=elapsedTime-greenOffset;
+  }
+    
+  
+  
+  textSize(32);
+  text("Time left:"+ (timeLeftGame-elapsedTime),700,50);
+  text("Time needed:"+ (timeLeftGreen),700,100);
+  
   
 }
 void mouseClicked(){
