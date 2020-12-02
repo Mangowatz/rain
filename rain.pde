@@ -12,7 +12,7 @@ float theta=0;
 ArrayList<Ball> list = new ArrayList<Ball>();
 ArrayList<Shape> shapeList = new ArrayList<Shape>();
 int timeLeftGame=60;
-int timeLeftGreen=5;
+int timeLeftGreen=250;
 int elapsedTime;
 int timeOffset;
 float greenOffset;
@@ -152,18 +152,24 @@ if(list.get(selection).xPos>100||list.get(selection).yPos>100) start=true;
 
   elapsedTime = (millis()/1000)-timeOffset;
  
-  if(list.get(selection).xPos<100||list.get(selection).yPos<100){
-    greenOffset=elapsedTime;
-  }else{
-    timeLeftGreen+=elapsedTime-greenOffset;
+  if((list.get(selection).xPos>900&&list.get(selection).yPos>900)&&start){
+    timeLeftGreen--;
   }
-    
   
   
   textSize(32);
   text("Time left:"+ (timeLeftGame-elapsedTime),700,50);
-  text("Time needed:"+ (timeLeftGreen),700,100);
+  text("Time needed:"+ (timeLeftGreen/50),700,100);
   
+  while((timeLeftGame-elapsedTime<0)||timeLeftGreen<=0){
+    if(timeLeftGreen<=0) greenCount=timeLeftGreen+(timeLeftGame-elapsedTime)*50;
+    background(100,100,100);
+    textSize(100);
+    fill(255,0,0);
+    text("GAME OVER",200,300);
+    text("Highscore: "+10000/greenCount,150,600);
+    break;
+  }
   
 }
 void mouseClicked(){
