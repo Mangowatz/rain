@@ -11,12 +11,12 @@ int screenX = 1000; int screenY = 1000;
 float theta=0;
 ArrayList<Ball> list = new ArrayList<Ball>();
 ArrayList<Shape> shapeList = new ArrayList<Shape>();
-int timeLeftGame=60;
+int timeLeftGame=10;
 int timeLeftGreen=250;
 int elapsedTime;
 int timeOffset;
 float greenOffset;
-float greenCount;
+float greenCount=0;
 
 
 void setup() {
@@ -87,7 +87,7 @@ if(!start)timeOffset=(millis()/1000); //Don't start timer until ball leaves zone
 if(list.get(selection).xPos>100||list.get(selection).yPos>100) start=true;
   for(int i =0;i<list.size();i++){
   if(start&&i!=selection){
-    list.get(i).follow(list.get(selection));
+   // list.get(i).follow(list.get(selection));
   }
   list.get(i).update();
   if(i==selection){
@@ -158,17 +158,20 @@ if(list.get(selection).xPos>100||list.get(selection).yPos>100) start=true;
   
   
   textSize(32);
-  text("Time left:"+ (timeLeftGame-elapsedTime),700,50);
-  text("Time needed:"+ (timeLeftGreen/50),700,100);
+  text("Time left: "+ (timeLeftGame-elapsedTime),700,50);
+  text("Time needed: "+ (timeLeftGreen/50),700,100);
   
-  while((timeLeftGame-elapsedTime<0)||timeLeftGreen<=0){
-    if(timeLeftGreen<=0) greenCount=timeLeftGreen+(timeLeftGame-elapsedTime)*50;
+  if((timeLeftGame-elapsedTime<0)||timeLeftGreen<=0){
+    if(greenCount!=1){ 
+      timeLeftGreen+=abs((timeLeftGame-elapsedTime)*25)+((250 - timeLeftGreen+1)*50);
+  }
+    greenCount=1;
     background(100,100,100);
     textSize(100);
     fill(255,0,0);
     text("GAME OVER",200,300);
-    text("Highscore: "+10000/greenCount,150,600);
-    break;
+    text("Highscore: "+timeLeftGreen,150,600);
+    
   }
   
 }
