@@ -11,12 +11,13 @@ int screenX = 1000; int screenY = 1000;
 float theta=0;
 ArrayList<Ball> list = new ArrayList<Ball>();
 ArrayList<Shape> shapeList = new ArrayList<Shape>();
-int timeLeftGame=10;
+int timeLeftGame=15;
 int timeLeftGreen=250;
 int elapsedTime;
 int timeOffset;
 float greenOffset;
 float greenCount=0;
+int highscore;
 
 
 void setup() {
@@ -152,25 +153,24 @@ if(list.get(selection).xPos>100||list.get(selection).yPos>100) start=true;
 
   elapsedTime = (millis()/1000)-timeOffset;
  
-  if((list.get(selection).xPos>900&&list.get(selection).yPos>900)&&start){
+  if((list.get(selection).xPos>900&&list.get(selection).yPos>900)&&greenCount!=1){
     timeLeftGreen--;
   }
-  
   
   textSize(32);
   text("Time left: "+ (timeLeftGame-elapsedTime),700,50);
   text("Time needed: "+ (timeLeftGreen/50),700,100);
   
-  if((timeLeftGame-elapsedTime<0)||timeLeftGreen<=0){
+  if((timeLeftGame-elapsedTime<=0)||timeLeftGreen<=10){
     if(greenCount!=1){ 
-      timeLeftGreen+=abs((timeLeftGame-elapsedTime)*25)+((250 - timeLeftGreen+1)*50);
+      highscore=((timeLeftGame-elapsedTime)*25)+((250 - timeLeftGreen+1)*50);
   }
     greenCount=1;
     background(100,100,100);
     textSize(100);
     fill(255,0,0);
     text("GAME OVER",200,300);
-    text("Highscore: "+timeLeftGreen,150,600);
+    text("Highscore: "+highscore,100,600);
     
   }
   
