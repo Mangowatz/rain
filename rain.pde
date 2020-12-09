@@ -12,7 +12,7 @@ float theta=0;
 ArrayList<Ball> list = new ArrayList<Ball>();
 ArrayList<Shape> shapeList = new ArrayList<Shape>();
 int timeLeftGame=15;
-int timeLeftGreen=250;
+int greenPoints=0;
 int elapsedTime;
 int timeOffset;
 float greenOffset;
@@ -22,8 +22,8 @@ int highscore;
 
 void setup() {
 
-//file[0]=new SoundFile(this,1+".wav");
-//file[1]=new SoundFile(this,2+".wav");
+file[0]=new SoundFile(this,1+".wav");
+file[1]=new SoundFile(this,2+".wav");
 
   size(1000, 1000);
   background(255, 255, 255);
@@ -88,7 +88,7 @@ if(!start)timeOffset=(millis()/1000); //Don't start timer until ball leaves zone
 if(list.get(selection).xPos>100||list.get(selection).yPos>100) start=true;
   for(int i =0;i<list.size();i++){
   if(start&&i!=selection){
-   // list.get(i).follow(list.get(selection));
+    list.get(i).follow(list.get(selection));
   }
   list.get(i).update();
   if(i==selection){
@@ -154,16 +154,16 @@ if(list.get(selection).xPos>100||list.get(selection).yPos>100) start=true;
   elapsedTime = (millis()/1000)-timeOffset;
  
   if((list.get(selection).xPos>900&&list.get(selection).yPos>900)&&greenCount!=1){
-    timeLeftGreen--;
+    greenPoints++;
   }
   
   textSize(32);
   text("Time left: "+ (timeLeftGame-elapsedTime),700,50);
-  text("Time needed: "+ (timeLeftGreen/50),700,100);
+  text("Points: "+ greenPoints,700,100);
   
-  if((timeLeftGame-elapsedTime<=0)||timeLeftGreen<=10){
+  if(timeLeftGame-elapsedTime<=0){
     if(greenCount!=1){ 
-      highscore=((timeLeftGame-elapsedTime)*25)+((250 - timeLeftGreen+1)*50);
+      highscore=(greenPoints*50);
   }
     greenCount=1;
     background(100,100,100);
