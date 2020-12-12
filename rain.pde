@@ -7,6 +7,7 @@ int selection = 0;
 static final int ballNumber = 5;
 static final int shapeNumber = 4;
 boolean start = false;
+final static boolean isSound = false;
 int screenX = 1000; int screenY = 1000;
 float theta=0;
 ArrayList<Ball> list = new ArrayList<Ball>();
@@ -20,10 +21,12 @@ float greenCount=0;
 int highscore;
 
 
-void setup() {
+void setup() { 
 
+  if(isSound){
 file[0]=new SoundFile(this,1+".wav");
 file[1]=new SoundFile(this,2+".wav");
+  }
 
   size(1000, 1000);
   background(255, 255, 255);
@@ -31,12 +34,12 @@ file[1]=new SoundFile(this,2+".wav");
   list.add(new Ball(/*random(1,10),random(1,10)*/0,0,(int)random(10,70),10,true));
   }
   
-        shapeList.add(new Shape(250,250,0,1));
-        shapeList.add(new Shape(500,500,1,0));
-        //shapeList.add(new Shape((int)random(50,300),(int)random(200,300),(int)random(0,1),(int)random(0,4)));
-        //shapeList.add(new Shape((int)random(500,700),(int)random(200,300),(int)random(0,1),(int)random(0,4)));
-        //shapeList.add(new Shape((int)random(50,300),(int)random(500,700),(int)random(0,1),(int)random(0,4)));
-        //shapeList.add(new Shape((int)random(500,300),(int)random(500,700),(int)random(0,1),(int)random(0,4)));
+        //shapeList.add(new Shape(250,250,0,1));
+        shapeList.add(new Shape(1000,500,1,0));
+        shapeList.add(new Shape((int)random(50,300),(int)random(200,300),(int)random(0,2),(int)random(0,4)));
+        shapeList.add(new Shape((int)random(500,700),(int)random(200,300),(int)random(0,2),(int)random(0,4)));
+        shapeList.add(new Shape((int)random(50,300),(int)random(500,700),(int)random(0,2),(int)random(0,4)));
+        shapeList.add(new Shape((int)random(500,300),(int)random(500,700),(int)random(0,2),(int)random(0,4)));
   
       //shapeList.add(new Shape((int)random(50,300),(int)random(200,300),(int)random(0,3),(int)random(0,4)));
     
@@ -69,7 +72,7 @@ void draw() {
         fill(40,100,200);
         shapeList.get(i).drawShape();
       }
-  if(keyPressed){
+
     if(keyCode == UP){
     list.get(selection).setYvel(list.get(selection).getYvel()-.1);
     }
@@ -82,7 +85,7 @@ void draw() {
     if(keyCode == DOWN){
     list.get(selection).setYvel(list.get(selection).getYvel()+.1);
     }    
-}
+
 if(!start)timeOffset=(millis()/1000); //Don't start timer until ball leaves zone
 
 if(list.get(selection).xPos>100||list.get(selection).yPos>100) start=true;

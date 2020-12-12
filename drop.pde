@@ -73,7 +73,7 @@ class Ball {
   private void update(){
     if((xPos-getSize()<0)){
       //change xVel +
-      file[0].play(1,1);
+      if(isSound) file[0].play(1,1);
       xVel*=-1;
       xPos+=1;
       setColor((int)random(0,255),(int)random(0,255),(int)random(0,255));
@@ -81,21 +81,21 @@ class Ball {
     }
     if((xPos+getSize()>screenX)){
       //change xVel +
-      file[0].play(1,1);
+      //if(isSound) file[0].play(1,1);
       xVel*=-1;
       xPos-=1;
       setColor((int)random(0,255),(int)random(0,255),(int)random(0,255));
       System.out.println("IMPACT RIGHT WALL");
     }
     if((yPos+getSize()>screenY)){
-      file[1].play(1,1);
+      //if(isSound) file[1].play(1,1);
       yVel*=-1;
       yPos-=1;
       setColor((int)random(0,255),(int)random(0,255),(int)random(0,255));
       System.out.println("IMPACT BOTTOM WALL");
     }
     if((yPos-getSize()<0)){
-      file[1].play(1,1);
+      //if(isSound) file[1].play(1,1);
       yVel*=-1;
       yPos+=1;
       setColor((int)random(0,255),(int)random(0,255),(int)random(0,255));
