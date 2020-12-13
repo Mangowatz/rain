@@ -7,7 +7,7 @@ int selection = 0;
 static final int ballNumber = 5;
 static final int shapeNumber = 4;
 boolean start = false;
-final static boolean isSound = false;
+final static boolean isSound = true;
 int screenX = 1000; int screenY = 1000;
 float theta=0;
 ArrayList<Ball> list = new ArrayList<Ball>();
@@ -54,11 +54,21 @@ file[1]=new SoundFile(this,2+".wav");
   
   list.get(0).setXpos(50);
   list.get(0).setYpos(50);
-  list.get(1).setXpos(200);
-  list.get(2).setXpos(300);
-  list.get(3).setXpos(400);
-  list.get(4).setXpos(500);
-  list.get(5).setXpos(600);
+  
+  list.get(1).setXpos((int)random(150,900));
+  list.get(1).setYpos((int)random(100,900));
+  
+  list.get(2).setXpos((int)random(150,900));
+  list.get(2).setYpos((int)random(100,900));
+  
+  list.get(3).setXpos((int)random(150,900));
+  list.get(3).setYpos((int)random(100,900));
+  
+  list.get(4).setXpos((int)random(150,900));
+  list.get(4).setYpos((int)random(100,900));
+  
+  list.get(5).setXpos((int)random(150,900));
+  list.get(5).setYpos((int)random(100,900));
 
 }
 void draw() {
@@ -85,13 +95,16 @@ void draw() {
     if(keyCode == DOWN){
     list.get(selection).setYvel(list.get(selection).getYvel()+.1);
     }    
+if(!keyPressed){
+ keyCode=0; 
+}
 
 if(!start)timeOffset=(millis()/1000); //Don't start timer until ball leaves zone
 
 if(list.get(selection).xPos>100||list.get(selection).yPos>100) start=true;
   for(int i =0;i<list.size();i++){
   if(start&&i!=selection){
-    list.get(i).follow(list.get(selection));
+    //list.get(i).follow(list.get(selection));
   }
   list.get(i).update();
   if(i==selection){

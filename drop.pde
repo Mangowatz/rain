@@ -81,21 +81,21 @@ class Ball {
     }
     if((xPos+getSize()>screenX)){
       //change xVel +
-      //if(isSound) file[0].play(1,1);
+      if(isSound) file[0].play(1,1);
       xVel*=-1;
       xPos-=1;
       setColor((int)random(0,255),(int)random(0,255),(int)random(0,255));
       System.out.println("IMPACT RIGHT WALL");
     }
     if((yPos+getSize()>screenY)){
-      //if(isSound) file[1].play(1,1);
+      if(isSound) file[1].play(1,1);
       yVel*=-1;
       yPos-=1;
       setColor((int)random(0,255),(int)random(0,255),(int)random(0,255));
       System.out.println("IMPACT BOTTOM WALL");
     }
     if((yPos-getSize()<0)){
-      //if(isSound) file[1].play(1,1);
+      if(isSound) file[1].play(1,1);
       yVel*=-1;
       yPos+=1;
       setColor((int)random(0,255),(int)random(0,255),(int)random(0,255));
@@ -145,7 +145,7 @@ class Ball {
   }
   
   private int touchingBoundry(){
-    for(int i =0;i<=shapeList.size();i++){
+    for(int i =0;i<shapeList.size()-1;i++){
     if((this.xPos-(size/2)<=boundList.get(i).getXPositive())&&((this.xPos+(size/2))>=boundList.get(i).getXNegative())&&(this.yPos-(size/2)<=boundList.get(i).getYPositive()&&this.yPos+(size/2)>=boundList.get(i).getYNegative())){//vertical boundry
       //background(255,255,255);
       return 0;
