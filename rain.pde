@@ -7,12 +7,12 @@ int selection = 0;
 static final int ballNumber = 5;
 static final int shapeNumber = 4;
 boolean start = false;
-final static boolean isSound = true;
+final static boolean isSound = false;
 int screenX = 1000; int screenY = 1000;
 float theta=0;
 ArrayList<Ball> list = new ArrayList<Ball>();
 ArrayList<Shape> shapeList = new ArrayList<Shape>();
-int timeLeftGame=15;
+int timeLeftGame=60;
 int greenPoints=0;
 int elapsedTime;
 int timeOffset;
@@ -104,7 +104,7 @@ if(!start)timeOffset=(millis()/1000); //Don't start timer until ball leaves zone
 if(list.get(selection).xPos>100||list.get(selection).yPos>100) start=true;
   for(int i =0;i<list.size();i++){
   if(start&&i!=selection){
-    //list.get(i).follow(list.get(selection));
+    list.get(i).follow(list.get(selection));
   }
   list.get(i).update();
   if(i==selection){
